@@ -1,1 +1,72 @@
-hi
+<div class='container'>
+<div class='row'>
+ 
+
+
+
+<br />
+<br />
+<div class='col-md-6'>
+<h2>
+Credit / Debit
+</h2>
+</div>
+<div class='col-md-6'>
+<h2>
+Transfer
+</h2>
+</div>
+<div class='col-md-6'>
+<%=render :partial => 'entities', :locals => {:id => 'credit_debit_id'}%>
+<br />
+<div class="input-group mb-2">
+	<input type="text" class="form-control"  aria-label="" aria-describedby="button-addon2">
+	<div class="input-group-append">
+	<button class="btn btn-secondary" type="button" id="button-addon2"><%=Tran::CREDIT%></button>
+	</div>
+</div>
+<div class="input-group mb-2">
+	<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="button-addon2">
+	<div class="input-group-append">
+		<button class="btn btn-secondary" type="button" id="button-addon2"><%=Tran::DEBIT%></button>
+	</div>
+</div>
+Balance: 
+</div>
+<div class='col-md-6'>
+
+<div class='row'>
+	<div class='col-md-2'>
+		Source: 
+	</div>
+	<div class='col-md-10'>
+		<%=render :partial => 'entities', :locals => {:id => 'transfer_source_id'}%>
+	</div>
+	<div class='col-md-2'>
+	Target: 
+	</div>
+	<div class='col-md-10'>
+		<%=render :partial => 'entities', :locals => {:id => 'transfer_target_id'}%>
+	</div>
+</div>
+<br />
+<div class="input-group mb-2">
+	<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="button-addon2">
+	<div class="input-group-append">
+		<button class="btn btn-secondary" type="button" id="button-addon2"><%=Tran::TRANSFER%></button>
+	</div>
+</div>
+
+</div>
+
+<div class='col-md-12'>
+<h2>
+Transactions
+</h2>
+<%=render :partial => 'entities', :locals => {:id => 'transaction_id'}%>
+</div>
+
+
+
+</div>
+</div>
