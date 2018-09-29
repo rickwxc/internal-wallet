@@ -1,0 +1,52 @@
+
+rails g scaffold user name:string
+rails g scaffold team name:string
+rails g scaffold stock name:string
+
+
+rails g scaffold tran sourceentity_type:string sourceentity_id:integer targetentity_type:string
+targetentity_id:integer type:string amount:decimal{10.2} 
+
+rails g scaffold tran source_entity_type:string source_entity_id:integer target_entity_type:string
+target_entity_id:integer type:string amount:decimal{10.2} 
+
+- Every instance of a single transaction should have proper validations against required fields and their source and targetwallet, e.g. from who we are taking money and transferring to whom? (Credits == source wallet == nil, Debits == targetwallet == nil)
+
+user/company
+
+credit
+nil, nil, user, 1, 100
+nil, nil, company, 2, 1000
+
+
+debit
+user, 1, nil, nil,  -20
+company, 2, nil, nil, -300
+
+
+transfer
+user -> company
+user, 1, com, 2, 5
+com, 2, user, 1, -5
+
+
+class tran < ActiveRecord::Base
+  belongs_to :source_entity, polymorphic: true
+  belongs_to :target_entity, polymorphic: true
+end
+
+class user < ActiveRecord::Base
+  has_many :trans, as: :source_entity
+  has_many :tar_trans, as: :target_entity
+end
+
+class Comment < ActiveRecord::Base
+  belongs_to :commentable, polymorphic: true
+  belongs_to :user
+end
+has_many :comments, as: :commentable
+
+
+#  commentable_type :string
+#  commentable_id   :integer
+#  user_id          :integer

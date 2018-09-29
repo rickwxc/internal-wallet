@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Source entity type:</strong>
+  <%= @tran.source_entity_type %>
+</p>
+
+<p>
+  <strong>Source entity:</strong>
+  <%= @tran.source_entity_id %>
+</p>
+
+<p>
+  <strong>Target entity type:</strong>
+  <%= @tran.target_entity_type %>
+</p>
+
+<p>
+  <strong>Target entity:</strong>
+  <%= @tran.target_entity_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @tran.type %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @tran.amount %>
+</p>
+
+<%= link_to 'Edit', edit_tran_path(@tran) %> |
+<%= link_to 'Back', trans_path %>
