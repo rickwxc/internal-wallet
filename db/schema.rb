@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929095703) do
+ActiveRecord::Schema.define(version: 20180929215732) do
 
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180929095703) do
     t.integer  "source_entity_id"
     t.string   "target_entity_type"
     t.integer  "target_entity_id"
-    t.string   "type"
+    t.string   "trans_type"
     t.decimal  "amount",             precision: 10, scale: 2
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
