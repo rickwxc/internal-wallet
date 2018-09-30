@@ -16,6 +16,14 @@
   </head>
 
   <body>
+	<%=link_to 'home', root_path%>
+	|
+	<%=link_to 'add user', new_user_path%>
+	|
+	<%=link_to 'add team', new_team_path%>
+	|
+	<%=link_to 'add stock', new_stock_path%>
+	<hr />
     <%= yield %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
