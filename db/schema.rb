@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929215732) do
+ActiveRecord::Schema.define(version: 20180930024726) do
 
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180929215732) do
     t.decimal  "amount",             precision: 10, scale: 2
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.integer  "linked_tran_id"
   end
 
   create_table "users", force: :cascade do |t|
