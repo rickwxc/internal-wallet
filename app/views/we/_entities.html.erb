@@ -1,29 +1,26 @@
 
 <select class='form-control' id='<%=id%>'>
-<%User.all.each do|u| %>
-<option>
+<option value=''>
 --- User ---
 </option>
-<option>
+<%User.all.each do|u| %>
+<option value='<%=u.id %>_<%=u.class.name %>'>
 	<%=u.name %>
 </option>
 <%end %>
-<option>
- --- Team
---- 
+<option  value=''>
+ --- Team --- 
 </option>
 <%Team.all.each do|u| %>
-<option>
+<option value='<%=u.id %>_<%=u.class.name %>'>
 	<%=u.name %>
 </option>
 <%end %>
-<option>
---- 
-Stock
---- 
+<option  value=''>
+--- Stock --- 
 </option>
 <%Stock.all.each do|u| %>
-<option>
+<option value='<%=u.id %>_<%=u.class.name %>'>
 	<%=u.name %>
 </option>
 <%end %>

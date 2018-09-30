@@ -10,6 +10,23 @@ class Tran < ApplicationRecord
 	belongs_to :source_entity, polymorphic: true, optional: true
 	belongs_to :target_entity, polymorphic: true, optional: true
 
+	belongs_to :linked_tran, class_name: 'Tran', foreign_key: 'linked_tran_id', :optional => true
+
+	def extra_info
+		if trans_type == Tran::TRANSFER  
+			if source_entity == nil
+				return "to #{linked_tran.target_entity.name}" 
+			end
+
+			return "from #{source_entity.name}" 
+		end
+	end
+
+	def self.trans_list(entity)
+		trans_list = Tran.where(:target_entity => entity).order('id desc')
+		trans_list
+	end
+
 	def self.balance(entity, lock = false)
 		if lock
 			Tran.lock do

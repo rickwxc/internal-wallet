@@ -1,0 +1,38 @@
+
+Balance: <%=@balance%>
+<table class='table table-striped table-border'>
+	<td>
+<b>
+	Type
+</b>
+	</td>
+	<td>
+	<b>
+		Amount
+	</b>
+	</td>
+	<td>
+	Info
+	</td>
+</tr>
+
+
+<%@trans.each do |tr|%>
+<tr>
+	<td>
+	<span class='<%=get_trans_class tr.trans_type%>'>
+<%=tr.trans_type%>
+	</span>
+		
+	</td>
+	<td>
+	<%=tr.amount%>
+	</td>
+	<td>
+
+	<%=tr.extra_info%>
+	</td>
+</tr>
+<%end%>
+
+</table>
