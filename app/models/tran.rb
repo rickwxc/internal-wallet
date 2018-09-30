@@ -12,6 +12,15 @@ class Tran < ApplicationRecord
 
 	belongs_to :linked_tran, class_name: 'Tran', foreign_key: 'linked_tran_id', :optional => true
 
+	def self.system_info 
+		total_debit = Tran.where(:trans_type => Tran::DEBIT).sum(:amount)
+		total_credit = Tran.where(:trans_type => Tran::CREDIT).sum(:amount)
+{
+		:total_debit => total_debit,
+		:total_credit => total_credit
+}
+	end
+
 	def extra_info
 		if trans_type == Tran::TRANSFER  
 			if source_entity == nil

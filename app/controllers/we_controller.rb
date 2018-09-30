@@ -1,6 +1,7 @@
 class WeController < ApplicationController
 
 	def home
+		@system_info = Tran.system_info 
 	end
 
 	def credit
