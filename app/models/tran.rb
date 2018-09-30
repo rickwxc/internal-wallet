@@ -21,6 +21,17 @@ class Tran < ApplicationRecord
 }
 	end
 
+	def in_or_out 
+		if trans_type != Tran::TRANSFER  
+			return
+		end
+			if source_entity == nil
+				return "out" 
+			end
+
+		return "in" 
+	end
+
 	def extra_info
 		if trans_type == Tran::TRANSFER  
 			if source_entity == nil
