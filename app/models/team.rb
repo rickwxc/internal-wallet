@@ -7,4 +7,5 @@ class Team < ApplicationRecord
   has_one :source_trans, -> { where source_entity_type: "Team"},
        class_name: Tran, foreign_key: :source_entity_id,
 	        foreign_type: :source_entity_type, dependent: :destroy
+  validates :name, presence: true
 end

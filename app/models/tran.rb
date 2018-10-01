@@ -8,9 +8,13 @@ class Tran < ApplicationRecord
 	TRANSFER = 'transfer'
 
 	belongs_to :source_entity, polymorphic: true, optional: true
-	belongs_to :target_entity, polymorphic: true, optional: true
+	belongs_to :target_entity, polymorphic: true
 
 	belongs_to :linked_tran, class_name: 'Tran', foreign_key: 'linked_tran_id', :optional => true
+
+	validates :amount, presence: true
+	validates :trans_type, presence: true
+
 
 	def self.system_info 
 		total_debit = Tran.where(:trans_type => Tran::DEBIT).sum(:amount)

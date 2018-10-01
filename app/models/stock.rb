@@ -8,4 +8,5 @@ class Stock < ApplicationRecord
        class_name: Tran, foreign_key: :source_entity_id,
 	        foreign_type: :source_entity_type, dependent: :destroy
 
+  validates :name, presence: true
 end

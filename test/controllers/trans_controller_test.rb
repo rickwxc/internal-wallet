@@ -15,14 +15,6 @@ class TransControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create tran" do
-    assert_difference('Tran.count') do
-      post trans_url, params: { tran: { amount: @tran.amount, source_entity_id: @tran.source_entity_id, source_entity_type: @tran.source_entity_type, target_entity_id: @tran.target_entity_id, target_entity_type: @tran.target_entity_type, trans_type: @tran.trans_type } }
-    end
-
-    assert_redirected_to tran_url(Tran.last)
-  end
-
   test "should show tran" do
     get tran_url(@tran)
     assert_response :success
@@ -31,11 +23,6 @@ class TransControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_tran_url(@tran)
     assert_response :success
-  end
-
-  test "should update tran" do
-    patch tran_url(@tran), params: { tran: { amount: @tran.amount, source_entity_id: @tran.source_entity_id, source_entity_type: @tran.source_entity_type, target_entity_id: @tran.target_entity_id, target_entity_type: @tran.target_entity_type, trans_type: @tran.trans_type } }
-    assert_redirected_to tran_url(@tran)
   end
 
   test "should destroy tran" do
