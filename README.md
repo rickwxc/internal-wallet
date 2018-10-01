@@ -1,3 +1,10 @@
+#Rick Notes
+- STI + polymorphic for transaction table.
+- use gem fatalistic for locking
+- lock table to query balance and perform debit or transfer.
+- test case only covers transfer/credit/debit/balance
+- Extra note: in my design, both credit and debit source wallet is nil.
+
 Goal: Internal wallet transactional system (with a front end)
 
 #Requirements:
