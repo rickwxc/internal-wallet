@@ -22,14 +22,7 @@ class Tran < ApplicationRecord
 	end
 
 	def in_or_out 
-		if trans_type != Tran::TRANSFER  
-			return
-		end
-			if source_entity == nil
-				return "out" 
-			end
-
-		return "in" 
+		self.amount > 0
 	end
 
 	def extra_info

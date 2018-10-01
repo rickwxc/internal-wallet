@@ -23,15 +23,13 @@ Balance: <%=@balance%>
 	<span class='<%=get_trans_class tr.trans_type%>'>
 <%=tr.trans_type%>
 	</span>
-<%if tr.in_or_out%>
-	<span class='badge badge-secondary'>
-<%=tr.in_or_out%>
-	</span>
-<%end%>
 		
 	</td>
 	<td>
+	<span class='<%=get_in_out_class tr.in_or_out%>' >
+
 	<%=tr.amount%>
+	</span>
 	</td>
 	<td>
 
