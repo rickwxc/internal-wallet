@@ -40,11 +40,19 @@ class Tran < ApplicationRecord
 	end
 
 	def self.trans_list(entity)
+		if !entity
+			return
+		end
+
 		trans_list = Tran.where(:target_entity => entity).order('id desc')
 		trans_list
 	end
 
 	def self.balance(entity, lock = false)
+		if !entity
+			return
+		end
+
 		if lock
 			Tran.lock do
 				total = Tran.where(:target_entity => entity).sum(:amount)
@@ -58,6 +66,10 @@ class Tran < ApplicationRecord
 
 	def self.debit(entity, amount)
 		if amount <= 0
+			return
+		end
+
+		if !entity
 			return
 		end
 
@@ -81,6 +93,10 @@ class Tran < ApplicationRecord
 			return
 		end
 
+		if !entity
+			return
+		end
+
 		trans = Tran.new
 		trans.target_entity = entity 
 		trans.amount = amount
@@ -92,6 +108,14 @@ class Tran < ApplicationRecord
 
 	def self.transfer(from_entity, to_entity, amount)
 		if amount <= 0
+			return
+		end
+
+		if !from_entity || !to_entity 
+			return
+		end
+
+		if  from_entity.class.name == to_entity.class.name and from_entity.id == to_entity.id
 			return
 		end
 
