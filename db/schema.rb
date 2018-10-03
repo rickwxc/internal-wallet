@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930024726) do
+ActiveRecord::Schema.define(version: 20181003065951) do
 
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(version: 20180930024726) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "linked_tran_id"
+    t.index ["source_entity_id", "source_entity_type"], name: "index_trans_on_source_entity_id_and_source_entity_type"
+    t.index ["target_entity_id", "target_entity_type"], name: "index_trans_on_target_entity_id_and_target_entity_type"
+    t.index ["trans_type"], name: "index_trans_on_trans_type"
   end
 
   create_table "users", force: :cascade do |t|
